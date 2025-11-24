@@ -1,6 +1,6 @@
 # Springboot-PaddlePaddle
 📖 项目简介
-这是一个基于SpringBoot后端框架和Bootstrap前端框架构建的智能语言学习系统，集成了百度飞桨(PaddlePaddle)平台的OCR文字识别技术，为语言学习者提供全方位的学习支持。
+这是一个基于SpringBoot后端框架和Bootstrap前端框架构建的智能语言学习系统，集成了百度飞桨(PaddlePaddle)平台的OCR文字识别等技术（开发者可根据API灵活添加功能），为语言学习者提供全方位的学习支持。
 
 核心特色：通过AI技术赋能传统语言学习，实现拍照取词、智能练习、个性化学习路径等功能，显著提升学习效率。
 
