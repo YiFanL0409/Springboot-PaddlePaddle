@@ -1,0 +1,2 @@
+# Springboot-PaddlePaddle
+这是一个结合Springboot框架以及百度飞浆框架的语言学习系统 ，通过Springboot构建基础模块，再使用AI-Api为学习系统赋能，可作为本科阶段的开发课程作业
