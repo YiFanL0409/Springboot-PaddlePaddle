@@ -1,0 +1,364 @@
+.public-header .phd-sign, .public-header .phd-status {
+    display: none;
+    float: left;
+    line-height: 34px
+}
+
+.public-header, .public-header .phd-side .ph-nav a {
+    position: relative;
+    border-bottom: 1px solid #eaeaea
+}
+
+.public-header {
+    font-family: 'Microsoft YaHei';
+    background: #f7f7f7;
+    height: 34px;
+    font-size: 14px;
+    color: #7f7f7f
+}
+
+.public-header .public-header-container {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative
+}
+
+.public-header .phd-sign a, .public-header .phd-status .ph-out {
+    margin-left: 18px
+}
+
+.public-header .publice-clear {
+    clear: both;
+    font-size: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden
+}
+
+.public-header a {
+    color: #7f7f7f
+}
+
+.public-header a:hover {
+    color: #00baa2;
+    text-decoration: none
+}
+
+.public-header .phd-home {
+    float: left;
+    line-height: 34px;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-home.png?164dcc") left center no-repeat;
+    padding-left: 16px
+}
+
+.public-header .phd-status {
+    padding-left: 18px
+}
+
+.public-header .phd-status .ph-name {
+    color: #00baa2;
+    text-decoration: underline
+}
+
+.public-header .phd-side {
+    float: right;
+    overflow: hidden
+}
+
+.public-header .phd-side .ph-lab {
+    float: left;
+    line-height: 34px;
+    margin-left: 20px
+}
+
+.public-header .phd-side .ph-nav, .public-header .phd-side .ph-phone {
+    margin-left: 10px;
+    float: left
+}
+
+.public-header .phd-side .ph-nav a {
+    display: block;
+    line-height: 34px;
+    border-left: 1px solid #f7f7f7;
+    border-right: 1px solid #f7f7f7;
+    padding: 0 16px 0 10px;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-arrow-bottom.png?2255ad") 68px center no-repeat;
+    height: 34px
+}
+
+.public-header .phd-side .ph-nav a:after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 1px;
+    height: 19px;
+    background: #dadada
+}
+
+.public-header .phd-side .ph-nav a.active {
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-arrow-top.png?9c5abf") 68px center no-repeat #fff;
+    border-left: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #fff;
+    color: #00baa2
+}
+
+.public-header .phd-side .ph-nav a.active:after {
+    display: none
+}
+
+.public-header .phd-side .ph-phone a {
+    display: block;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-phone-b.png?33153d") 0 8px no-repeat;
+    padding-left: 16px;
+    line-height: 34px
+}
+
+.public-header .phd-side .ph-phone a:hover {
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-phone-f.png?0259cd") 0 8px no-repeat;
+    color: #00baa2
+}
+
+.public-header .phd-side .ph-wx {
+    float: left;
+    margin-left: 20px
+}
+
+.public-header .phd-side .ph-wx a {
+    display: block;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-wx-b.png?0a04f0") 0 10px no-repeat;
+    padding-left: 22px;
+    line-height: 34px
+}
+
+.public-header .phd-side .ph-wx a:hover {
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-wx-f.png?bbea92") 0 10px no-repeat;
+    color: #00baa2
+}
+
+.public-header .layer-nav-content {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 100%;
+    border: 1px solid #eaeaea;
+    border-top: none;
+    overflow: hidden;
+    padding: 16px 0 26px;
+    background: #fff;
+    display: none
+}
+
+.public-header .pd-nav-2, .public-header .pd-nav-3 {
+    padding-right: 10px
+}
+
+.public-header .pd-nav-cell {
+    float: left
+}
+
+.public-header .pd-nav-1 {
+    padding-left: 26px
+}
+
+.public-header .pd-nav-1 .pd-nav-title {
+    color: #21b5a9
+}
+
+.public-header .pd-nav-2 .pd-nav-title {
+    color: #fd8813
+}
+
+.public-header .pd-nav-split {
+    float: left;
+    width: 1px;
+    background: #eaeaea;
+    height: 140px;
+    margin-top: 14px;
+    margin-right: 29px
+}
+
+.public-header .pd-nav-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #505050;
+    line-height: 36px
+}
+
+.public-header .pd-nav-paper {
+    overflow: hidden
+}
+
+.public-header .pd-nav-paper .pd-ul-one {
+    width: 54px
+}
+
+.public-header .pd-nav-paper .pd-ul-two {
+    width: 86px
+}
+
+.public-header .pd-nav-paper .pd-ul-three {
+    width: 98px
+}
+
+.public-header .pd-nav-paper .pd-ul-four {
+    width: 128px
+}
+
+.public-header .pd-nav-paper ul {
+    float: left
+}
+
+.public-header .pd-nav-paper ul li {
+    overflow: hidden
+}
+
+.public-header .pd-nav-paper ul li a {
+    color: #505050;
+    line-height: 24px
+}
+
+.public-header .pd-nav-paper ul li a:hover {
+    color: #00baa2
+}
+
+.public-header .layer-phone-content {
+    position: absolute;
+    right: 38px;
+    top: 34px;
+    width: 148px;
+    border: 1px solid #eaeaea;
+    padding: 18px 12px 8px;
+    background: #fff;
+    display: none
+}
+
+.public-header .layer-phone-content:after {
+    content: '';
+    width: 15px;
+    height: 7px;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-phone-tu.png?1d2c93") no-repeat;
+    margin-left: -7px;
+    position: absolute;
+    left: 50%;
+    top: -7px
+}
+
+.public-header .pd-phone-app {
+    width: 148px;
+    height: 148px;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-phone-ewm.jpg?0f9671") no-repeat
+}
+
+.public-header .pd-phone-text {
+    color: #a2a2a2;
+    text-align: center;
+    line-height: 22px;
+    padding-top: 6px
+}
+
+.public-header .pd-phone-text span {
+    color: #00baa2;
+    display: block
+}
+
+.public-header .layer-wx-content {
+    position: absolute;
+    right: 0;
+    top: 34px;
+    width: 270px;
+    border: 1px solid #eaeaea;
+    padding: 10px 0 8px 18px;
+    background: #fff;
+    display: none
+}
+
+.public-header .layer-wx-content:after {
+    content: '';
+    width: 15px;
+    height: 7px;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-phone-tu.png?1d2c93") no-repeat;
+    margin-right: 26px;
+    position: absolute;
+    right: 0;
+    top: -7px
+}
+
+.public-header .pd-wx-app {
+    width: 116px;
+    height: 116px;
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-wx-ewm.png?b3950c") no-repeat;
+    float: left
+}
+
+.public-header .pd-wx-ul {
+    float: right;
+    width: 142px;
+    padding-top: 5px
+}
+
+.public-header .pd-wx-ul li {
+    background: url("//images.koolearn.com/shark/project/zt/common/public-header/i/icon-wx-dot.png?9688a4") left center no-repeat;
+    line-height: 34px;
+    padding-left: 10px
+}
+
+.public-header .pd-wx-ul li a {
+    color: #a2a2a2
+}
+
+.public-header .pd-wx-ul li a:hover {
+    color: #00baa2
+}
+
+.public-header .pd-wx-text {
+    text-align: left;
+    line-height: 26px;
+    padding-top: 6px;
+    padding-left: 12px;
+    color: #00baa2
+}
+
+.public-header {
+    display: block !important
+}
+.btn-green {
+    width: 110px;
+    height: 30px;
+    border-radius: 4px;
+    line-height: 28px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00b2b8;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    background-image: none;
+    border: 0 solid transparent;
+    cursor: pointer;
+    font-family: "Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.btn-red {
+    width: 110px;
+    height: 30px;
+    border-radius: 4px;
+    line-height: 28px;
+    font-size: 16px;
+    color: #fff!important;
+    background-color: mediumvioletred;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    background-image: none;
+    border: 0 solid transparent;
+    cursor: pointer;
+    font-family: "Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+#select-box {
+    text-align: center;
+    margin: 10px;
+}
+/*a:visited {*/
+/*    color: #222222;*/
+/*}*/

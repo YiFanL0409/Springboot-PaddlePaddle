@@ -1,0 +1,26 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">生词本</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="/userCenter" title="用户中心">用户中心</a> >
+        <a href="#" title="生词本">生词本</a></div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="word-wrap">
+
+            <div class="word-box">
+                <a class="word" th:each="word : ${wordList}"
+                   th:href="@{'/strangeWordDetail?wordId='+${word.wordId}+'&taskId='+${taskId}}">[[${word.wordName}]]</a>
+            </div>
+
+            <p th:if="${wordList.size() == 0}">暂无该课程的生词，快去个人中心单词里学习一下吧</p>
+        </div>
+    </div>
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

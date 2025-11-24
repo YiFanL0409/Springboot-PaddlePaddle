@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.QuestionExerciseMapper">
+
+    <resultMap type="com.example.pojo.QuestionExercise" id="QuestionExerciseMap">
+        <result property="exerciseid" column="exerciseId" jdbcType="INTEGER"/>
+        <result property="questionid" column="questionId" jdbcType="INTEGER"/>
+        <result property="userid" column="userId" jdbcType="VARCHAR"/>
+        <result property="wordid" column="wordId" jdbcType="INTEGER"/>
+        <result property="answer" column="answer" jdbcType="VARCHAR"/>
+        <result property="flag" column="flag" jdbcType="INTEGER"/>
+        <result property="createtime" column="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="QuestionExerciseMap">
+        select exerciseId,
+               questionId,
+               userId,
+               wordId,
+               answer,
+               flag,
+               createTime
+        from question_exercise
+        where exerciseId = #{exerciseid}
+    </select>
+
+    <select id="findByUserIdAndQuestionId" resultMap="QuestionExerciseMap">
+        select exerciseId,
+               questionId,
+               userId,
+               wordId,
+               answer,
+               flag,
+               createTime
+        from question_exercise
+        where questionId = #{questionId}
+          and userId = #{userId}
+    </select>
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="QuestionExerciseMap">
+        select
+        exerciseId, userId, questionId, wordId, answer, flag, createTime
+        from question_exercise
+        <where>
+            <if test="exerciseid != null">
+                and exerciseId = #{exerciseid}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userId = #{userid}
+            </if>
+            <if test="wordid != null">
+                and wordId = #{wordid}
+            </if>
+            <if test="questionid != null">
+                and questionId = #{questionid}
+            </if>
+            <if test="answer != null and answer != ''">
+                and answer = #{answer}
+            </if>
+            <if test="flag != null">
+                and flag = #{flag}
+            </if>
+            <if test="createtime != null">
+                and createTime = #{createtime}
+            </if>
+        </where>
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from question_exercise
+        <where>
+            <if test="exerciseid != null">
+                and exerciseId = #{exerciseid}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userId = #{userid}
+            </if>
+            <if test="wordid != null">
+                and wordId = #{wordid}
+            </if>
+            <if test="questionid != null">
+                and questionId = #{questionid}
+            </if>
+            <if test="answer != null and answer != ''">
+                and answer = #{answer}
+            </if>
+            <if test="flag != null">
+                and flag = #{flag}
+            </if>
+            <if test="createtime != null">
+                and createTime = #{createtime}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="pageWrongByUserIdAndGrade" resultMap="QuestionExerciseMap">
+        SELECT *
+        FROM question_exercise
+        WHERE userId = #{userId} AND flag = 0
+          AND wordId IN (SELECT wordId FROM word WHERE grade = #{grade})
+        order by exerciseId asc limit 1
+        offset #{pageNo}
+    </select>
+
+    <select id="countWrongByUserIdAndGrade" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM question_exercise
+        WHERE userId = #{userId}  AND flag = 0
+          AND wordId IN (SELECT wordId FROM word WHERE grade = #{grade})
+    </select>
+
+    <select id="countDaysByUserIdAndGrade" resultType="java.lang.Integer">
+        select count(distinct DATE_FORMAT(createTime, '%Y-%m-%d'))
+        FROM question_exercise
+        WHERE userId = #{userId}  AND flag = 0
+          AND wordId IN (SELECT wordId FROM word WHERE grade = #{grade})
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="exerciseid" useGeneratedKeys="true">
+        insert into question_exercise(userId, questionId, wordId, answer, flag, createTime)
+        values (#{userid}, #{questionid}, #{wordid}, #{answer}, #{flag}, #{createtime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="exerciseid" useGeneratedKeys="true">
+        insert into question_exercise(userId, questionId, wordId, answer, flag, createTime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.userid}, #{entity.questionid}, #{entity.wordid}, #{entity.answer}, #{entity.flag},
+            #{entity.createtime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="exerciseid" useGeneratedKeys="true">
+        insert into question_exercise(userId, questionId, wordId, answer, flag, createTime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.userid}, #{entity.questionid}, #{entity.wordid}, #{entity.answer}, #{entity.flag},
+            #{entity.createtime})
+        </foreach>
+        on duplicate key update
+        userId = values(userId),
+        questionId = values(questionId),
+        wordId = values(wordId),
+        answer = values(answer),
+        flag = values(flag),
+        createTime = values(createTime)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update question_exercise
+        <set>
+            <if test="userid != null and userid != ''">
+                userId = #{userid},
+            </if>
+            <if test="questionid != null">
+                questionId = #{questionid},
+            </if>
+            <if test="wordid != null">
+                wordId = #{wordid},
+            </if>
+            <if test="answer != null and answer != ''">
+                answer = #{answer},
+            </if>
+            <if test="flag != null">
+                flag = #{flag},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime},
+            </if>
+        </set>
+        where exerciseId = #{exerciseid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from question_exercise
+        where exerciseId = #{exerciseid}
+    </delete>
+
+    <delete id="deleteByUserIdAndGrade">
+        delete
+        from question_exercise
+        where userId = #{userId}
+          AND wordId IN (SELECT wordId FROM word WHERE grade = #{grade})
+    </delete>
+
+</mapper>
+

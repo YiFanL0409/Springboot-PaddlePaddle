@@ -1,0 +1,71 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">单词详情</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="/userCenter" title="用户中心">用户中心</a> >
+        <a href="/word/letter/all" title="背单词词汇表">字母单词表</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="单词">[[${word.wordName}]]</a></div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="word-title">
+            <h1 class="word-spell">[[${word.wordName}]]</h1>
+
+        </div>
+        <div class="content-box">
+            <div class="details-title">
+                <div class="title-text">怎么读</div>
+            </div>
+            <div class="details-content">
+                <div class="word-spell-box">
+                    <span class="word-spell">[[${word.audio}]]</span>
+<!--                    有道的插件读单词-->
+                    <span class="word-spell-audio" onclick="playAudio()" data-url="//picflow.koolearn.com/dict/mp3/9ce488fb4760bf8a8d603655096dbb59.mp3"></span>
+                    <audio id='audioPlay' src='http://dict.youdao.com/speech?audio=mild' th:value="${word.wordName}"/>
+
+                </div>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="details-title">
+                <div class="title-text">是什么意思</div>
+            </div>
+            <div class="details-content">
+                <div class="details-content-title-box">
+                    <div>
+                        [[${word.explanation}]]
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="details-title">
+                <div class="title-text">学习怎么用</div>
+            </div>
+            <div class="details-content">
+                <div class="details-content-title-box">
+                    <div>
+                        [[${word.example}]]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>
+<script th:inline="javascript">
+
+    function playAudio() {
+        //得到读音名字
+        var word = [[${word.getWordName()}]];
+        console.log(word);
+        //改变读音地址
+        document.getElementById('audioPlay').src = 'http://dict.youdao.com/speech?audio=' + word;
+        document.getElementById('audioPlay').play();
+    }
+</script>

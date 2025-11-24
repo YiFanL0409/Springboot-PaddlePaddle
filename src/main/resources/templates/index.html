@@ -1,0 +1,26 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">背单词词汇表</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="背单词词汇表">背单词词汇表</a></div>
+</div>
+<div class="content-wrap">
+    <!-- 导航 -->
+    <div class="left-content">
+        <div class="word-wrap">
+            <div th:each="grade : ${gradeList}">
+                <div class="word-title">[[${grade.gradeName}]]
+                    <a class="word-more" th:href="@{'?gradeId='+${grade.gradeId}}">更多</a>
+                </div>
+                <div class="word-box">
+                    <a class="word" th:each="word : ${grade.wordList}" th:href="@{'/word/'+${word.wordId}}">[[${word.wordName}]]</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

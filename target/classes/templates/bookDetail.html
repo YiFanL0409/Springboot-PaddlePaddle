@@ -1,0 +1,36 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">书籍详情</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="/book/all" title="阅读中心">阅读中心</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="书籍详情">[[${book.bookName}]]</a></div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="word-title">
+            <h1 class="word-spell">[[${book.bookName}]]</h1>
+        </div>
+        <div class="content-box">
+            <div class="details-title">
+                <div class="title-text">作者：[[${book.bookUser}]]</div>
+            </div>
+            <div class="details-content">
+                <div class="details-content-title-box">
+                    <div th:utext="${book.content}"></div>
+                </div>
+            </div>
+            <div id="select-box">
+                <form action="/book/doRead">
+                    <input type="hidden" name="id" th:value="${book.bookId}">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

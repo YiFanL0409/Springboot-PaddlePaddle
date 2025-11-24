@@ -1,0 +1,50 @@
+<div th:replace="module/header"></div>
+<style>
+    .content-wrap .left-content .content-box .details-title .title-text {
+        padding-left: 30px;
+    }
+    .content-wrap .left-content .content-box .details-title .title-text:before {
+        display: none;
+    }
+</style>
+<div class="content-nav">
+    <h1 class="content-title">题目练习</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="/userCenter/question" title="背单词词汇表">题目练习</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="单词">[[${grade.gradeName}]]单词 </a>
+       <span><b> (进度[[${hadFinish}]]/[[${hadFinish+notFinish}]]，已练习[[${hadFinish}]]，待练习[[${notFinish}]])</b></span>
+    </div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content" style="width: 100%;">
+        <div class="word-title" style="height: 40px;">
+            <h1 class="word-spell" style="text-align: center;font-size: 1.5em;">[[${question.question}]]</h1>
+        </div>
+        <input type="hidden" id="questionId" th:value="${question.id}">
+        <input type="hidden" id="grade" th:value="${grade.gradeId}">
+        <div class="content-box">
+            <div class="details-title" onclick="gotoAnswer('A')" style="margin-bottom: 10px;cursor:pointer">
+                <div class="title-text"><b>A.</b> [[${question.optiona}]]</div>
+            </div>
+            <div class="details-title" onclick="gotoAnswer('B')" style="margin-bottom: 10px;cursor:pointer">
+                <div class="title-text"><b>B.</b> [[${question.optionb}]]</div>
+            </div>
+            <div class="details-title" onclick="gotoAnswer('C')" style="margin-bottom: 10px;cursor:pointer">
+                <div class="title-text"><b>C.</b> [[${question.optionc}]]</div>
+            </div>
+            <div class="details-title" onclick="gotoAnswer('D')" style="margin-bottom: 10px;cursor:pointer">
+                <div class="title-text"><b>D.</b> [[${question.optiond}]]</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>
+<script th:inline="javascript">
+
+    function gotoAnswer(answer) {
+        let questionId = document.getElementById("questionId").value
+        let grade = document.getElementById("grade").value
+        window.location.href = '/userCenter/doQuestion/answer?questionId=' + questionId + '&grade=' + grade + '&answer=' + answer;
+    }
+</script>

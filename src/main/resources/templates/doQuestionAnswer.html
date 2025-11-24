@@ -1,0 +1,69 @@
+<div th:replace="module/header"></div>
+<style>
+    .answer-option {
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .bg-error {
+        background: #f62d2d !important;
+    }
+    .content-wrap .left-content .content-box .details-title .title-text {
+        padding-left: 30px;
+    }
+    .content-wrap .left-content .content-box .details-title .title-text:before {
+        display: none;
+    }
+</style>
+<div class="content-nav">
+    <h1 class="content-title">题目练习</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="/userCenter/question" title="背单词词汇表">题目练习</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="单词">[[${grade.gradeName}]]单词</a>
+        <span><b> (进度[[${hadFinish}]]/[[${hadFinish+notFinish}]]，已练习[[${hadFinish}]]，待练习[[${notFinish}]])</b></span>
+
+    </div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content" style="width: 100%;">
+        <div class="word-title" style="height: 40px;">
+            <h1 class="word-spell" style="text-align: center;font-size: 1.5em;">[[${question.question}]]</h1>
+        </div>
+        <div class="content-box">
+            <div class="details-title answer-option" th:style="${question.answer == 'A' ? 'background: #00bcc2': ''}"
+                 th:classappend="${question.answer != 'A' && questionExercise.answer == 'A' ? 'bg-error' : ''}">
+                <div class="title-text"><b>A.</b> [[${question.optiona}]]</div>
+            </div>
+            <div class="details-title answer-option" th:style="${question.answer == 'B' ? 'background: #00bcc2': ''}"
+                 th:classappend="${question.answer != 'B' && questionExercise.answer == 'B' ? 'bg-error' : ''}">
+                <div class="title-text"><b>B.</b> [[${question.optionb}]]</div>
+            </div>
+            <div class="details-title answer-option" th:style="${question.answer == 'C' ? 'background: #00bcc2': ''}"
+                 th:classappend="${question.answer != 'C' && questionExercise.answer == 'C' ? 'bg-error' : ''}">
+                <div class="title-text"><b>C.</b> [[${question.optionc}]]</div>
+            </div>
+            <div class="details-title answer-option" th:style="${question.answer == 'D' ? 'background: #00bcc2': ''}"
+                 th:classappend="${question.answer != 'D' && questionExercise.answer == 'D' ? 'bg-error' : ''}">
+                <div class="title-text"><b>D.</b> [[${question.optiond}]]</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;margin-top: 20px;">
+            <p>正确答案：[[${question.answer}]] &nbsp; &nbsp;您的答案：
+                <span th:if="${questionExercise.flag == 1}" style="color: #39e139;">[[${questionExercise.answer}]]</span>
+                <span th:if="${questionExercise.flag == 0}" style="color: red;">[[${questionExercise.answer}]]</span>
+
+            </p>
+            <p style="margin-top: 10px;">
+                <a th:href="@{'/userCenter/doQuestion?grade='+${grade.gradeId}}"
+                   style="color: #fff;  text-decoration: none;" class="btn-green">下一题</a>&nbsp; &nbsp;
+            </p>
+        </div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>
+<script th:inline="javascript">
+
+
+</script>

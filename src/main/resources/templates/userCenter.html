@@ -1,0 +1,54 @@
+<div th:replace="module/header" xmlns="http://www.w3.org/1999/html"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">用户中心</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="用户中心">用户中心</a>
+    </div>
+    <div class="content-wrap">
+        <!--            左侧内容-->
+        <ul class="left-sidebar">
+            <li class="left-sidebar-item active">
+                <a href="/userCenter">全部进度</a>
+            </li>
+            <li class="left-sidebar-item">
+                <a href="/userCenter/question">题目练习</a>
+            </li>
+            <li class="left-sidebar-item">
+                <a href="/userCenter/word">单词学习</a>
+            </li>
+            <li class="left-sidebar-item">
+                <a href="/userCenter/listen">听力学习</a>
+            </li>
+            <li class="left-sidebar-item">
+                <a href="/userCenter/book">阅读学习</a>
+            </li>
+        </ul>
+        <div class="left-content" style="width: 837px;">
+            <div class="word-title">
+                <h1 class="word-spell">
+                    全部进度
+                </h1>
+            </div>
+            <div class="content-box" th:each="task : ${taskList}">
+                <div class="details-title">
+                    <div class="title-text">[[${task.name}]]</div>
+                    <a th:if="${task.finish < task.total}" class="word-more" style="color: #00a8c6" th:href="@{'/userCenter/task/'+${task.id}}">前往学习</a>
+                    <a th:if="${task.finish >= task.total}" class="word-more" style="color: #00a8c6" th:href="@{'/userCenter/task/restart/'+${task.id}}">重新学习</a>
+                    <a class="word-more" th:if="${task.type == 'word'}" th:href="@{'/todayWord?taskId='+${task.id}}" style="color: orange;">今日单词复习</a>
+                    <a class="word-more" th:if="${task.type == 'word'}" th:href="@{'/strangeWord?taskId='+${task.id}}" style="color: blue">生词本</a>
+                    <a th:href="@{'/userCenter/task/cancel?id='+${task.id}}" style="color:red;">删除任务</a>
+                    <a th:href="@{'/userCenter/taskChart?taskId='+${task.id}}" th:if="${task.type == 'word'}" style="color:green;font-weight: bold">统计图</a>
+                </div>
+                <div class="details-content">
+                    <div class="word-spell-box">
+                    <span class="word-spell">
+                        完成进度：[[${task.percent}]]([[${task.finish}]]/[[${task.total}]]) &nbsp;&nbsp;&nbsp;
+                        已学习：[[${task.studyDays}]] 天
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="module/footer"></div>

@@ -1,0 +1,58 @@
+<!-- 右侧公共部分 s-->
+<div class="retrieve" th:if="${isTask == null}">
+    <div class="retrieve-title">每日一句
+        <a class="retrieve-more" href="/sentence/all">更多</a>
+    </div>
+    <div>
+        <div class="word-title">英文</div>
+        <div class="word-box" style="word-wrap: break-word;word-break: normal;">
+            [[${sentence.sentenceName}]]
+        </div>
+    </div>
+    <div>
+        <div class="word-title">中文</div>
+        <div class="word-box" style="word-wrap: break-word;word-break: normal;">
+            [[${sentence.explain}]]
+        </div>
+    </div>
+
+    <div class="retrieve-title">字母词汇表
+        <a class="retrieve-more" href="/word/letter/all">更多</a>
+    </div>
+
+    <div th:each="letter : ${letterList}">
+        <div class="word-title">[[${letter.letter}]]开头的单词</div>
+        <div class="word-box">
+            <a class="word word-black" th:each="w : ${letter.wordList}" th:href="@{'/word/letter/'+${letter.letter}}">[[${w.wordName}]]</a>
+        </div>
+    </div>
+</div>
+<!-- 右侧公共部分 e -->
+
+<div class="retrieve" th:if="${isTask != null}">
+    <div class="retrieve-title">任务进度
+        <a class="retrieve-more" href="/userCenter">进度管理</a>
+    </div>
+    <div>
+        <div class="word-title">[[${task.name}]]]</div>
+        <div class="word-box" style="word-wrap: break-word;word-break: normal;">
+            [[${task.percent}]] ([[${task.finish}]] / [[${task.total}]])
+        </div>
+    </div>
+
+    <div class="retrieve-title">修改状态
+    </div>
+    <div>
+        <div class="word-box" style="padding: 10px;">
+            <a th:href="@{'/userCenter/task/finishDetail?taskId='+${task.id}+'&businessId='+${businessId}}" class="btn-green">我已完成</a>&nbsp; &nbsp;
+
+            <a style="margin-top: 5px;" th:if="${word != null && strangeWord != null}"
+               th:href="@{'/userCenter/strangeWord/remove?taskId='+${task.id}+'&wordId='+${businessId}}" class="btn-red">从生词本移除</a>&nbsp;
+            <a style="margin-top: 5px;" th:if="${word != null && strangeWord == null}"
+               th:href="@{'/userCenter/strangeWord/add?taskId='+${task.id}+'&wordId='+${businessId}}" class="btn-red">加入生词本</a>&nbsp;
+
+        </div>
+    </div>
+
+</div>
+

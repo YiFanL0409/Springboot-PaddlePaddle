@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.StrangeWordMapper">
+
+    <!--查看生词所有信息-->
+    <select id="queryAllStrangeWord" resultType="com.example.pojo.StrangeWord">
+        select *
+        from strange_word
+    </select>
+    <!--根据ID查询一条生词-->
+    <select id="queryStrangeWordById" resultType="com.example.pojo.StrangeWord">
+        select *
+        from strange_word
+        where id = #{id}
+    </select>
+    <!--添加一条生词-->
+    <insert id="addStrangeWord" parameterType="com.example.pojo.StrangeWord">
+        insert into strange_word(wordId, userId, taskId, createTime)
+        values (#{wordId}, #{userId}, #{taskId}, #{createTime});
+    </insert>
+    <!--删除一条生词-->
+    <delete id="deleteStrangeWord" parameterType="Integer">
+        delete
+        from strange_word
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteByWordIdAndUserIdAndTaskId">
+        delete
+        FROM strange_word
+        WHERE wordId = #{wordId}
+          AND userId = #{userId}
+          AND taskId = #{taskId}
+    </delete>
+    <!--修改一条生词-->
+    <update id="updateStrangeWord" parameterType="com.example.pojo.StrangeWord">
+        update strange_word
+        set wordId=#{wordId},
+            userId=#{userId},
+            taskId=#{taskId},
+            createTime=#{createTime}
+        where id = #{id}
+    </update>
+
+    <!--查看最新生词的内容-->
+    <select id="queryNewStrangeWordById" resultType="com.example.pojo.StrangeWord">
+        SELECT *
+        FROM strange_word
+        WHERE id = (SELECT MAX(id) FROM notice)
+    </select>
+
+    <select id="findByWordIdAndUserIdAndTaskId" resultType="com.example.pojo.StrangeWord">
+        SELECT *
+        FROM strange_word
+        WHERE wordId = #{wordId}
+          AND userId = #{userId}
+          AND taskId = #{taskId} limit 1
+    </select>
+
+    <select id="findStrangeWordByUserId" resultType="com.example.pojo.Word">
+        select *
+        from word
+        where wordId in (
+            select wordId
+            from strange_word
+            where userId = #{userId}
+              AND taskId = #{taskId}
+        )
+    </select>
+
+</mapper>

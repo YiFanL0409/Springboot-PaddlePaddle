@@ -1,0 +1,35 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">今天单词查看</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="/userCenter" title="用户中心">用户中心</a> >
+        <a href="#" title="今天单词复习">今天单词查看</a></div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="word-wrap">
+
+            <div class="word-box">
+                <a class="word" th:each="word : ${wordList}"
+                   th:href="@{'/todayWordDetail?wordId='+${word.wordId}+'&taskId='+${taskId}}">[[${word.wordName}]]</a>
+            </div>
+
+            <p th:if="${wordList.size() == 0}">今天还没有学习单词，快去个人中心单词里学习一下吧</p>
+        </div>
+    </div>
+    <div class="right-content">
+        <div class="retrieve">
+            <div>
+
+                <div class="word-box" th:if="${wordList.size() > 0}">
+                    <a th:href="'/todayWordDictation?taskId='+${taskId}+'&pageNum=0'" style="margin-top: 5px;" class="btn-red">开始默写</a>&nbsp;
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

@@ -1,0 +1,35 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">背单词词汇表</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="背单词词汇表">搜索[[${keywords}]]的结果</a></div>
+</div>
+<div class="content-wrap">
+    <!-- 导航 -->
+    <div class="left-content">
+        <div class="word-wrap">
+            <div th:each="grade : ${gradeList}" th:if="${grade.wordList != null}">
+                <div class="word-title">[[${grade.gradeName}]]
+                    <a class="word-more" href="">更多</a>
+                </div>
+                <div class="word-box">
+                    <a class="word" th:each="word : ${grade.wordList}" th:href="@{'/word/'+${word.wordId}}">[[${word.wordName}]]</a>
+                </div>
+            </div>
+            <div th:else style="text-align: center;padding-top: 20px;">
+                查询没有结果
+                <body>试试站外查询：</body>
+                <select onchange="javascript:window.open(this.options[this.selectedIndex].value)">
+                    <option value="https://dict.youdao.com/"><img src="D:\five\StudyEnglish2\src\main\resources\static\images\网易图标.png" height="32" width="32">网易有道词典</option>
+                    <option value="https://www.iciba.com/"><img src="D:\five\StudyEnglish2\src\main\resources\static\images\金山词霸图标.png" height="32" width="32">金山词霸</option>
+                    <option value="https://fanyi.baidu.com/"><img src="D:\five\StudyEnglish2\src\main\resources\static\images\百度翻译图标.png" height="32" width="32">百度翻译</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

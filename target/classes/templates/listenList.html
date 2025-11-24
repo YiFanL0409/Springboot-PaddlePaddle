@@ -1,0 +1,25 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">听力学习</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="听力学习">听力学习</a></div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="word-wrap">
+            <div th:each="listen : ${listenList}">
+                <div class="word-title">[[${listen.listenName}]]
+                    <a class="word-more" th:href="@{'/listen/'+${listen.listenId}}">听力详情</a>
+                </div>
+                <div class="word-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

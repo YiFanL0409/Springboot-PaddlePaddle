@@ -1,0 +1,67 @@
+<div th:replace="module/header" xmlns="http://www.w3.org/1999/html"></div>
+<style>
+
+</style>
+<div class="content-nav">
+    <h1 class="content-title">用户中心</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="用户中心">用户中心</a>
+    </div>
+    <div class="content-wrap">
+        <!--            左侧内容-->
+        <ul class="left-sidebar">
+            <li class="left-sidebar-item">
+                <a href="/userCenter">全部进度</a>
+            </li>
+            <li class="left-sidebar-item" th:classappend="${type == 'question' ? 'active' : ''}">
+                <a href="/userCenter/question">题目练习</a>
+            </li>
+            <li class="left-sidebar-item" th:classappend="${type == 'word' ? 'active' : ''}">
+                <a href="/userCenter/word">单词学习</a>
+            </li>
+            <li class="left-sidebar-item" th:classappend="${type == 'listen' ? 'active' : ''}">
+                <a href="/userCenter/listen">听力学习</a>
+            </li>
+            <li class="left-sidebar-item" th:classappend="${type == 'book' ? 'active' : ''}">
+                <a href="/userCenter/book">阅读学习</a>
+            </li>
+        </ul>
+        <div class="left-content" style="width: 837px;">
+            <div class="word-title">
+                <h1 class="word-spell">
+                    [[${typeName}]]等级选择
+                </h1>
+            </div>
+            <div class="content-box" th:each="grade : ${gradeList}">
+                <div class="details-title">
+                    <div class="title-text">
+                        [[${grade.gradeName}]]
+                        <span th:if="${type == 'word'}">词汇</span>
+                        <span th:if="${type == 'book'}">书籍</span>
+                        <span th:if="${type == 'listen'}">听力</span>
+                        <span th:if="${type == 'question'}">单词题目</span>
+                    </div>
+                    <a class="word-more"
+                       th:if="${type == 'word' || type == 'book' || type == 'listen'}" style="color: #00a8c6"
+                       th:href="@{'/userCenter/doSelect?grade='+${grade.gradeId}+'&type='+${type}}">加入学习计划</a>
+
+                    <a class="word-more"
+                       th:if="${type == 'question'}" style="color: #00a8c6"
+                       th:href="@{'/userCenter/doQuestion?grade='+${grade.gradeId}}">开始做题</a>
+                    <a class="word-more"  th:if="${type == 'question'}" style="color: red" th:href="@{'/userCenter/doQuestion/clear?grade='+${grade.gradeId}}">清空做题记录</a>
+
+                    <a class="word-more" th:if="${type == 'question'}" th:href="@{'/userCenter/doQuestion/wrongBook?grade='+${grade.gradeId}}"
+                       style="color: blue">错题本</a>
+                </div>
+                <div class="details-content" th:if="${type == 'question'}">
+                    <div class="word-spell-box">
+                    <span class="word-spell">
+                        完成进度：[[${grade.questionPercent}]]([[${grade.questionHadFinish}]]/[[${grade.questionTotal}]]) &nbsp;&nbsp;&nbsp;
+                        已练习：[[${grade.studyDays}]] 天
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="module/footer"></div>

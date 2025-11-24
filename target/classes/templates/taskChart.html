@@ -1,0 +1,110 @@
+<div th:replace="module/header" xmlns="http://www.w3.org/1999/html"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">用户中心</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="/userCenter" title="用户中心">用户中心</a> >
+        <a href="#" title="用户中心">数据统计</a>
+    </div>
+    <div class="content-wrap">
+        <div class="left-content">
+            <div class="word-title">
+                <h1 class="word-spell" style="text-align: center">
+                    [[${task.name}]] 任务统计图
+                </h1>
+            </div>
+            <div class="content-box">
+                <canvas id="myChart1" width="1000" height="300"></canvas>
+            </div>
+            <div class="content-box" style="width: 50%;float: left;">
+                <canvas id="myChart2" ></canvas>
+            </div>
+            <div class="content-box" style="width: 50%;margin-left: 50%;">
+                <canvas id="myChart3" ></canvas>
+            </div>
+
+            <br><br>
+            <div style="clear: both;"></div>
+            <a href="javascript:window.history.go(-1)" class="btn-green">返回</a>
+        </div>
+    </div>
+    <script th:inline="javascript">
+
+
+        <!--                    柱状图-->
+        var ctx1 = document.getElementById("myChart1");
+        var myChart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: [[${letterArr}]],
+                datasets: [{
+                    label: '[[${task.name}]]字母统计',
+                    data: [[${letterNumArr}]],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#00bcc2',
+
+                    ],
+                    borderColor: [
+                        '#00bcc2',
+
+                    ],
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+
+                        }
+                    }]
+                }
+            }
+        });
+
+
+        // 饼形图
+        var ctx2 = document.getElementById("myChart2");
+        var myPieChart2 = new Chart(ctx2, {
+            type: "pie",
+            data: {
+                datasets: [{
+                    data: [[${studyNum}]],
+                    backgroundColor: [
+                        '#00bcc2', '#75de69'
+
+                    ]
+                }],
+                labels: ["已学习", "未学习"]
+            }
+        });
+
+        // 折线图
+        var ctx3 = document.getElementById('myChart3');
+        var lineChart3 = new Chart(ctx3, {
+            type: 'line',
+            data:  {
+                labels: [[${dateArr}]],
+                datasets: [{
+                    label: "每日学习单词数量",
+                    data: [[${dateNumArr}]],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }]
+                }
+            }
+        });
+
+
+    </script>
+    <div th:replace="module/footer"></div>

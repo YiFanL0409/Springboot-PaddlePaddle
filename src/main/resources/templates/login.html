@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>语言学习平台 | 登录</title>
+    <link rel="stylesheet" href="/static/css/login/page.css">
+</head>
+<body>
+<div class="i-content-wrap p-content-wrap">
+    <div class="p-header">
+        <div class="p-content-inner">
+            <a href="/" target="_blank" style="float: left; color: #00bcc2; text-decoration: none; font-size: 30px; font-family: 楷体;" >语言学习平台</a>
+            <span class="welcome" style="margin-left: 10px;">欢迎登录</span>
+        </div>
+    </div>
+    <div class="p-content" style="background-image: url(/static/img/loginBg.jpg); background-color: rgb(143, 180, 222);">
+        <div class="p-content-inner" style="height: 560px;">
+            <div class="p-login" id="jp-login">
+                <div class="p-login-content">
+                    <div class="p-login-content-head">
+                        <a href="#" class="login-switch active">用户登录</a>
+                    </div>
+                    <form class="p-login-form" method="post"  action="/doLogin" id="data_form" name="data_form">
+
+
+                        <div class="item">
+                            <input type="text" id="userName" name="userName" value="" placeholder="请输入用户名">
+                        </div>
+                        <div class="item">
+                            <input type="password" id="password" name="password" value="" placeholder="请输入密码">
+                        </div>
+                        <button class="submit-btn" id="submitButt" name="submitButt">登录</button>
+                        <div class="item-handle">
+                            <a href="/register"
+                               target="_blank" class="forget-password">立即注册</a>
+                            <i class="divider"></i>
+                            <a href="/forget"
+                               target="_blank" class="forget-password">忘记密码?</a>
+                        </div>
+                        <p class="error-wrap" id="inputErrorDiv" style="text-align: center;" th:text="${msg}"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="p-footer">
+            <div class="p-content-inner">
+                <div class="copyright">
+                    <p class="lkso1">
+                        Copyright © 2024 <a href="#">语言学习平台 Corporation</a>, All Rights
+                        Reserved<span title=""></span><br>
+                    </p>
+                    <p class="lkso2">
+                        <a rel="nofollow" href="http://www.miibeian.gov.cn/">京ICP证123456789号</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

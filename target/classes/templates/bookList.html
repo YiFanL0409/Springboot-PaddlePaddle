@@ -1,0 +1,27 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">阅读中心</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="书籍阅读">书籍阅读</a></div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="word-wrap">
+            <div th:each="book : ${bookList}">
+                <div class="word-title">[[${book.bookName}]]
+                    <a class="word-more" th:href="@{'/book/'+${book.bookId}}">阅读详情</a>
+                </div>
+                <div class="word-box">
+                    [[${book.description}]]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

@@ -1,0 +1,62 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">公告列表</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="名人名言">公告列表</a></div>
+</div>
+
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!--这里开始的轮播图-->
+
+<template>
+    <el-carousel :interval="4000" type="card" height="200px">
+        <el-carousel-item v-for="item in 4" :key="item">
+            <h3 class="medium">这是图片{{ item }}</h3>
+        </el-carousel-item>
+    </el-carousel>
+</template>
+
+<style>
+    .el-carousel__item h3 {
+        color: #475669;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 200px;
+        margin: 0;
+    }
+
+    .el-carousel__item:nth-child(2n) {
+        background-color: #99a9bf;
+    }
+
+    .el-carousel__item:nth-child(2n+1) {
+        background-color: #d3dce6;
+    }
+</style>
+
+<!---->
+
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="word-wrap">
+            <div th:each="notice : ${noticeList}">
+                <div class="word-title">[[${notice.title}]]
+                </div>
+                <div class="word-box" th:utext="${notice.content}">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-content">
+        <div th:replace="module/right"></div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>

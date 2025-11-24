@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.QuestionMapper">
+
+    <resultMap type="com.example.pojo.Question" id="QuestionMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="wordid" column="wordId" jdbcType="INTEGER"/>
+        <result property="question" column="question" jdbcType="VARCHAR"/>
+        <result property="optiona" column="optionA" jdbcType="VARCHAR"/>
+        <result property="optionb" column="optionB" jdbcType="VARCHAR"/>
+        <result property="optionc" column="optionC" jdbcType="VARCHAR"/>
+        <result property="optiond" column="optionD" jdbcType="VARCHAR"/>
+        <result property="answer" column="answer" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="QuestionMap">
+        select id,
+               wordId,
+               question,
+               optionA,
+               optionB,
+               optionC,
+               optionD,
+               answer
+        from question
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="QuestionMap">
+        select
+        id, wordId, question, optionA, optionB, optionC, optionD, answer
+        from question
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="wordid != null">
+                and wordId = #{wordid}
+            </if>
+            <if test="question != null and question != ''">
+                and question LIKE CONCAT('%', #{question} ,'%')
+            </if>
+            <if test="optiona != null and optiona != ''">
+                and optionA = #{optiona}
+            </if>
+            <if test="optionb != null and optionb != ''">
+                and optionB = #{optionb}
+            </if>
+            <if test="optionc != null and optionc != ''">
+                and optionC = #{optionc}
+            </if>
+            <if test="optiond != null and optiond != ''">
+                and optionD = #{optiond}
+            </if>
+            <if test="answer != null and answer != ''">
+                and answer = #{answer}
+            </if>
+        </where>
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from question
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="wordid != null">
+                and wordId = #{wordid}
+            </if>
+            <if test="question != null and question != ''">
+                and question = #{question}
+            </if>
+            <if test="optiona != null and optiona != ''">
+                and optionA = #{optiona}
+            </if>
+            <if test="optionb != null and optionb != ''">
+                and optionB = #{optionb}
+            </if>
+            <if test="optionc != null and optionc != ''">
+                and optionC = #{optionc}
+            </if>
+            <if test="optiond != null and optiond != ''">
+                and optionD = #{optiond}
+            </if>
+            <if test="answer != null and answer != ''">
+                and answer = #{answer}
+            </if>
+        </where>
+    </select>
+    <select id="getNextQuestionByUserIdAndGrade" resultMap="QuestionMap">
+        SELECT id,
+               wordId,
+               question,
+               optionA,
+               optionB,
+               optionC,
+               optionD,
+               answer
+        FROM question
+        WHERE id NOT IN (SELECT questionId FROM question_exercise WHERE userId = #{userId})
+          AND wordId IN (SELECT wordId FROM word WHERE grade = #{grade})
+        order by id asc limit 1
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into question(wordId, question, optionA, optionB, optionC, optionD, answer)
+        values (#{wordid}, #{question}, #{optiona}, #{optionb}, #{optionc}, #{optiond}, #{answer})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into question(wordId, question, optionA, optionB, optionC, optionD, answer)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.wordid}, #{entity.question}, #{entity.optiona}, #{entity.optionb}, #{entity.optionc},
+            #{entity.optiond}, #{entity.answer})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into question(wordId, question, optionA, optionB, optionC, optionD, answer)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.wordid}, #{entity.question}, #{entity.optiona}, #{entity.optionb}, #{entity.optionc},
+            #{entity.optiond}, #{entity.answer})
+        </foreach>
+        on duplicate key update
+        wordId = values(wordId),
+        question = values(question),
+        optionA = values(optionA),
+        optionB = values(optionB),
+        optionC = values(optionC),
+        optionD = values(optionD),
+        answer = values(answer)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update question
+        <set>
+            <if test="wordid != null">
+                wordId = #{wordid},
+            </if>
+            <if test="question != null and question != ''">
+                question = #{question},
+            </if>
+            <if test="optiona != null and optiona != ''">
+                optionA = #{optiona},
+            </if>
+            <if test="optionb != null and optionb != ''">
+                optionB = #{optionb},
+            </if>
+            <if test="optionc != null and optionc != ''">
+                optionC = #{optionc},
+            </if>
+            <if test="optiond != null and optiond != ''">
+                optionD = #{optiond},
+            </if>
+            <if test="answer != null and answer != ''">
+                answer = #{answer},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from question
+        where id = #{id}
+    </delete>
+
+    <select id="getNotFinish" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM question
+        WHERE id NOT IN (SELECT questionId FROM question_exercise WHERE userId = #{userId})
+          AND wordId IN (SELECT wordId FROM word WHERE grade = #{grade})
+    </select>
+
+    <select id="getHadFinish" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM question
+        WHERE id IN (SELECT questionId FROM question_exercise WHERE userId = #{userId})
+          AND wordId IN (SELECT wordId FROM word WHERE grade = #{grade})
+    </select>
+
+</mapper>
+

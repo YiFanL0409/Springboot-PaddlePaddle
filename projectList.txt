@@ -1,0 +1,12 @@
+config  Java配置类
+controller  控制器，接受前端请求调用service然后返回前端
+dto  自己封装的对象
+mapper  数据访问层，定义查询SQL的接口
+pojo  数据库实体类，一个实体对应一张表
+service 业务逻辑层，调用mapper查询数据
+util  java工具类
+mybatis.mapper  数据库访问层SQL语句
+pom放配置信息
+
+static  前端文件，存放css，js等静态文件
+template 前端html文件

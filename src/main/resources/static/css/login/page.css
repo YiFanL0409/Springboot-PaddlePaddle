@@ -1,0 +1,498 @@
+@charset "UTF-8";
+.p-login {
+    width: 390px;
+    height: 380px;
+    z-index: 20;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    top: 30px
+}
+
+.p-login .title {
+    padding-top: 30px;
+    padding-left: 30px;
+    height: 45px;
+    font-size: 22px;
+    line-height: 45px;
+    font-family: 'Microsoft Yahei', simsun, arial
+}
+
+.i-third-login-box .p-login-content, .p-login .p-login-content {
+    padding: 0 30px 0 30px
+}
+
+.i-third-login-box .p-login-content .p-login-content-head, .p-login .p-login-content .p-login-content-head {
+    padding: 25px 0;
+    text-align: center
+}
+
+.i-third-login-box .p-login-content .p-login-content-head a, .p-login .p-login-content .p-login-content-head a {
+    color: #616161;
+    font-size: 20px;
+    text-decoration: none
+}
+
+.i-third-login-box .p-login-content .p-login-content-head a.active, .p-login .p-login-content .p-login-content-head a.active {
+    color: #14b1a0
+}
+
+.i-third-login-box .p-login-content .p-login-content-head .divider, .p-login .p-login-content .p-login-content-head .divider {
+    width: 1px;
+    background: #d7d6d6;
+    vertical-align: text-bottom;
+    height: 24px;
+    margin: 0 20px;
+    display: inline-block
+}
+
+.i-third-login-box .p-login-content .item, .p-login .p-login-content .item {
+    /*border: 1px solid #c9ced1;*/
+    position: relative;
+    margin-bottom: 13px;
+}
+.i-third-login-box .p-login-content .item, .p-login .p-login-content .item > input{
+    background-color: rgb(232, 240, 254) !important;
+    color: #222222;
+}
+
+.i-third-login-box .p-login-content .item.error, .p-login .p-login-content .item.error {
+    border-color: #ff1717
+}
+
+.i-third-login-box .p-login-content .item input, .p-login .p-login-content .item input {
+    padding: 12px 0;
+    padding-left: 12px;
+    border: 0 none;
+    line-height: 21px;
+    height: 21px;
+    font-size: 14px;
+    width: 316px
+}
+
+.i-third-login-box .p-login-content .item input::-moz-placeholder, .p-login .p-login-content .item input::-moz-placeholder {
+    color: #a7a7a7;
+    opacity: 1
+}
+
+.i-third-login-box .p-login-content .item input:-ms-input-placeholder, .p-login .p-login-content .item input:-ms-input-placeholder {
+    color: #a7a7a7
+}
+
+.i-third-login-box .p-login-content .item input::-webkit-input-placeholder, .p-login .p-login-content .item input::-webkit-input-placeholder {
+    color: #a7a7a7
+}
+
+.i-third-login-box .p-login-content .item input:focus, .p-login .p-login-content .item input:focus {
+    outline: 0
+}
+
+.i-third-login-box .p-login-content .item input:focus::-moz-placeholder, .p-login .p-login-content .item input:focus::-moz-placeholder {
+    color: #ccc;
+    opacity: 1
+}
+
+.i-third-login-box .p-login-content .item input:focus:-ms-input-placeholder, .p-login .p-login-content .item input:focus:-ms-input-placeholder {
+    color: #ccc
+}
+
+.i-third-login-box .p-login-content .item input:focus::-webkit-input-placeholder, .p-login .p-login-content .item input:focus::-webkit-input-placeholder {
+    color: #ccc
+}
+
+.i-third-login-box .p-login-content .item .login-label, .p-login .p-login-content .item .login-label {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    width: 15px;
+    height: 15px;
+    z-index: 1;
+    background: url(./i/icon-label.png) 0 0 no-repeat
+}
+
+.i-third-login-box .p-login-content .item .label-for-userphone, .p-login .p-login-content .item .label-for-userphone {
+    background-position: -31px 0;
+    height: 20px
+}
+
+.i-third-login-box .p-login-content .item .label-for-password, .p-login .p-login-content .item .label-for-password {
+    width: 16px;
+    height: 18px;
+    background-position: -16px 0
+}
+
+.i-third-login-box .p-login-content .item .login-code-btn, .p-login .p-login-content .item .login-code-btn {
+    position: absolute;
+    z-index: 1;
+    padding: 5px;
+    right: 0;
+    top: 0
+}
+
+.i-third-login-box .p-login-content .item .login-code-btn .p-get-code-btn, .p-login .p-login-content .item .login-code-btn .p-get-code-btn {
+    width: 104px;
+    height: 35px
+}
+
+.i-third-login-box .p-login-content .item .label-get-code-box, .p-login .p-login-content .item .label-get-code-box {
+    background-color: #f5f5f5;
+    border: 1px solid #c9ced1;
+    cursor: pointer;
+    right: -1px;
+    top: -1px
+}
+
+.i-third-login-box .p-login-content .item .label-get-code-box:hover, .p-login .p-login-content .item .label-get-code-box:hover {
+    background-color: #ececec
+}
+
+.i-third-login-box .p-login-content .item .label-get-code-box .p-get-code-btn, .p-login .p-login-content .item .label-get-code-box .p-get-code-btn {
+    line-height: 38px;
+    text-align: center;
+    color: #616161;
+    font-size: 14px
+}
+
+.i-third-login-box .p-login-content .item .label-get-code-disable, .p-login .p-login-content .item .label-get-code-disable {
+    background-color: #e9eff2;
+    border: 1px solid #c9ced1;
+    cursor: default
+}
+
+.i-third-login-box .p-login-content .item .label-get-code-disable:hover, .p-login .p-login-content .item .label-get-code-disable:hover {
+    background-color: #e9eff2
+}
+
+.i-third-login-box .p-login-content .item .label-get-code-disable:hover .p-get-code-btn, .p-login .p-login-content .item .label-get-code-disable:hover .p-get-code-btn {
+    background-color: #e9eff2
+}
+
+.i-third-login-box .p-login-content .item .label-get-code-disable .p-get-code-btn, .p-login .p-login-content .item .label-get-code-disable .p-get-code-btn {
+    background-color: #e9eff2;
+    color: #a3a3a3
+}
+
+.i-third-login-box .p-login-content .no-icon-item input, .p-login .p-login-content .no-icon-item input {
+    width: 315px;
+    padding-left: 10px
+}
+
+.i-third-login-box .p-login-content .t-voice-box, .p-login .p-login-content .t-voice-box {
+    margin-top: -13px;
+    color: #616161;
+    padding: 15px 0
+}
+
+.i-third-login-box .p-login-content .t-voice-box .t-voice-code-button, .p-login .p-login-content .t-voice-box .t-voice-code-button {
+    color: #14b1a0
+}
+
+.i-third-login-box .p-login-content .t-voice-box .countdown, .p-login .p-login-content .t-voice-box .countdown {
+    color: #a7a7a7
+}
+
+.i-third-login-box .p-login-content .t-voice-box .t-voice-phone, .p-login .p-login-content .t-voice-box .t-voice-phone {
+    color: #fd6d64
+}
+
+.i-third-login-box .p-login-content .t-voice-box .t-voice-code-button, .p-login .p-login-content .t-voice-box .t-voice-code-button {
+    cursor: pointer
+}
+
+.i-third-login-box .p-login-content .t-voice-box .t-voice-code-button:hover, .p-login .p-login-content .t-voice-box .t-voice-code-button:hover {
+    text-decoration: underline
+}
+
+.i-third-login-box .p-login-content .t-voice-box .t-voice-code, .i-third-login-box .p-login-content .t-voice-box .t-voice-wait, .p-login .p-login-content .t-voice-box .t-voice-code, .p-login .p-login-content .t-voice-box .t-voice-wait {
+    font-size: 14px
+}
+
+.i-third-login-box .p-login-content .item-handle, .p-login .p-login-content .item-handle {
+    margin-top: 20px;
+    text-align: center
+}
+
+.i-third-login-box .p-login-content .item-handle .auto-login, .p-login .p-login-content .item-handle .auto-login {
+    cursor: pointer
+}
+
+.i-third-login-box .p-login-content .item-handle a, .p-login .p-login-content .item-handle a {
+    color: #616161
+}
+
+.i-third-login-box .p-login-content .item-handle .divider, .p-login .p-login-content .item-handle .divider {
+    width: 1px;
+    background: #d7d6d6;
+    vertical-align: middle;
+    height: 14px;
+    margin: 0 18px;
+    display: inline-block
+}
+
+.i-third-login-box .p-login-content .submit-btn, .p-login .p-login-content .submit-btn {
+    display: block;
+    width: 100%;
+    height: 52px;
+    border: 0 none;
+    cursor: pointer;
+    background-color: #14b1a0;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 20px;
+    font-family: 'Microsoft YaHei'
+}
+
+.i-third-login-box .p-login-content .submit-btn:hover, .p-login .p-login-content .submit-btn:hover {
+    background-color: #19cbb8
+}
+
+.i-third-login-box .p-login-content .p-login-prompt, .p-login .p-login-content .p-login-prompt {
+    font-size: 14px;
+    color: #a3a3a3;
+    line-height: 34px
+}
+
+.i-third-login-box .p-login-content .p-login-linker, .p-login .p-login-content .p-login-linker {
+    border-top: 1px solid #e6e6e6;
+    padding: 20px;
+    position: relative;
+    margin-top: 90px;
+    text-align: center
+}
+
+.i-third-login-box .p-login-content .p-login-linker .label, .p-login .p-login-content .p-login-linker .label {
+    background: #fff;
+    position: absolute;
+    color: #616161;
+    top: -10px;
+    width: 140px;
+    height: 20px;
+    text-align: center;
+    left: 50%;
+    margin-left: -70px
+}
+
+.i-third-login-box .p-login-content .p-login-linker p, .p-login .p-login-content .p-login-linker p {
+    line-height: 12px;
+    margin-bottom: 10px
+}
+
+.i-third-login-box .p-login-content .p-login-linker a, .p-login .p-login-content .p-login-linker a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 30px;
+    background: url(./i/third-party.png) no-repeat;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-1, .p-login .p-login-content .p-login-linker a.p-login-1 {
+    background-position: 0 0
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-2, .p-login .p-login-content .p-login-linker a.p-login-2 {
+    background-position: -60px 0
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-3, .p-login .p-login-content .p-login-linker a.p-login-3 {
+    background-position: -120px 0
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-4, .p-login .p-login-content .p-login-linker a.p-login-4 {
+    background-position: -180px 0
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-5, .p-login .p-login-content .p-login-linker a.p-login-5 {
+    margin-right: 0;
+    background-position: -240px 0
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-1.hover, .i-third-login-box .p-login-content .p-login-linker a.p-login-1:hover, .p-login .p-login-content .p-login-linker a.p-login-1.hover, .p-login .p-login-content .p-login-linker a.p-login-1:hover {
+    background-position: 0 -30px
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-2.hover, .i-third-login-box .p-login-content .p-login-linker a.p-login-2:hover, .p-login .p-login-content .p-login-linker a.p-login-2.hover, .p-login .p-login-content .p-login-linker a.p-login-2:hover {
+    background-position: -60px -30px
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-3.hover, .i-third-login-box .p-login-content .p-login-linker a.p-login-3:hover, .p-login .p-login-content .p-login-linker a.p-login-3.hover, .p-login .p-login-content .p-login-linker a.p-login-3:hover {
+    background-position: -120px -30px
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-4.hover, .i-third-login-box .p-login-content .p-login-linker a.p-login-4:hover, .p-login .p-login-content .p-login-linker a.p-login-4.hover, .p-login .p-login-content .p-login-linker a.p-login-4:hover {
+    background-position: -180px -30px
+}
+
+.i-third-login-box .p-login-content .p-login-linker a.p-login-5.hover, .i-third-login-box .p-login-content .p-login-linker a.p-login-5:hover, .p-login .p-login-content .p-login-linker a.p-login-5.hover, .p-login .p-login-content .p-login-linker a.p-login-5:hover {
+    background-position: -240px -30px
+}
+
+.i-third-login-box .p-login-content .p-login-linker a:last-child, .p-login .p-login-content .p-login-linker a:last-child {
+    margin-right: 0
+}
+
+.p-alert-dialog {
+    padding: 0 20px;
+    font-family: 'Microsoft YaHei';
+    color: #686868
+}
+
+.p-alert-dialog .ui-dialog-title {
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+.p-alert-dialog .ui-dialog-body {
+    height: 213px;
+    padding-top: 0
+}
+
+.p-alert-dialog .ui-dialog-close {
+    top: 15px
+}
+
+.p-alert-dialog .content {
+    background: url(./i/alert.png) 0 0 no-repeat;
+    height: 104px;
+    padding-left: 145px;
+    vertical-align: middle;
+    margin-left: 40px
+}
+
+.p-alert-dialog .content .main {
+    font-size: 30px;
+    color: #686868;
+    padding-top: 5px;
+    padding-bottom: 10px
+}
+
+.p-alert-dialog .content .sub {
+    color: #a1a1a1
+}
+
+body, html {
+    background-color: #fff
+}
+
+body, button, input, select, textarea {
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif
+}
+
+.p-content-wrap .p-content-inner {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative
+}
+
+.p-header {
+    background: #fff;
+    text-align: left;
+    line-height: 90px;
+    height: 90px;
+    position: relative
+}
+
+.p-header .logo {
+    position: absolute;
+    top: 15px;
+}
+
+.p-header .welcome {
+    font-size: 24px;
+    color: #828282;
+    padding-left: 15px;
+    margin-left: 105px;
+    margin-right: 10px;
+    border-left: 1px solid #c9d0d3
+}
+
+.p-header .welcome:hover {
+    text-decoration: none
+}
+
+.p-content {
+    background: #fff center 0 no-repeat;
+    height: 560px;
+    min-width: 1000px
+}
+
+.p-content .error-wrap {
+    color: #fd6d64;
+    font-size: 12px;
+    margin-bottom: 13px
+}
+
+.p-content .error-wrap:before {
+    content: '';
+    background: url(./i/icon-mini.png) no-repeat;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 5px
+}
+
+.p-content .register {
+    text-align: center;
+    margin-top: 10px
+}
+
+.p-content .register a {
+    vertical-align: middle;
+    color: #616161;
+    text-decoration: none
+}
+
+.p-content .register:before {
+    content: '';
+    background: url(./i/icon-mini.png) -14px 0 no-repeat;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px
+}
+
+.p-footer .copyright {
+    text-align: center;
+    margin: 0 auto;
+    border-top: 1px solid #e8e8e8;
+    padding: 35px 0;
+    font-size: 12px;
+    color: #828282;
+    line-height: 24px
+}
+
+.p-footer .copyright a {
+    color: #828282
+}
+
+.p-footer .copyright .phone {
+    margin-bottom: 10px
+}
+
+.p-footer .copyright .lkso a {
+    margin-right: 15px
+}
+
+.p-footer .copyright .lkso2 {
+    word-spacing: 8px
+}
+
+.agreement-box {
+    padding-bottom: 15px;
+}
+
+.agreement-box .t-agreement-title {
+    font-size: 14px;
+    vertical-align: top;
+    color: #a3a3a3;
+}
+
+.agreement-box .t-agreement-title .t-agreement-name {
+    cursor: pointer;
+    color: #13bca5;
+}

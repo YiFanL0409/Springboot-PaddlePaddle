@@ -1,0 +1,108 @@
+<div th:replace="module/header"></div>
+
+<div class="content-nav">
+    <h1 class="content-title">今日单词复习默写</h1>
+    <div class="content-nav-link"><a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
+        <a th:href="'/todayWord?taskId='+${taskId}" title="今日单词查看">今日单词查看</a>&nbsp;&gt;&nbsp;
+        <a href="#" title="单词">单词默写</a>
+    </div>
+</div>
+<div class="content-wrap">
+    <!--            左侧内容-->
+    <div class="left-content">
+        <div class="content-box">
+            <div class="details-title">
+                <div class="title-text">中文释义</div>
+            </div>
+            <div class="details-content">
+                <div class="details-content-title-box">
+                    <div>
+                        [[${currentWord.explanation}]]
+                        <span id="audio" class="word-spell-audio" onclick="playAudio()"
+                              data-url="//picflow.koolearn.com/dict/mp3/9ce488fb4760bf8a8d603655096dbb59.mp3"></span>
+                        <audio id='audioPlay' src='http://dict.youdao.com/speech?audio=mild'
+                               th:value="${currentWord.wordName}"/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="details-title">
+                <div class="title-text">英文拼写</div>
+            </div>
+            <div class="details-content">
+                <div class="details-content-title-box">
+                    <div>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 80%">
+                                    <input type="text" id="inputSpell"
+                                           style="height: 28px; width: 100%;padding: 5px;font-weight: bold;font-size: 1.5em;"
+                                           placeholder="输入拼写">
+                                </td>
+                                <td style="width: 20%;">
+                                    <input type="button" onclick="check()"
+                                           style="height: 40px;padding: 5px;margin-left: 20px;" value="提交" class="">
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <p id="answerYes" style="color: green; font-size: 1.2em; display: none;">正确</p>
+                        <p id="answerNo" style="color: red; font-size: 1.2em;display: none;">错误，再试试</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="right-content">
+
+        <div class="retrieve">
+            <div>
+
+
+                <div class="word-box">
+                    <div class="word-box">
+                        <a th:if="${pageNum > 0}" th:href="'/todayWordDictation?taskId='+${taskId}+'&pageNum='+${pageNum-1}"
+                           style="margin-top: 5px;" class="btn-red">上一个</a>&nbsp;
+                        <a th:if="${(pageNum+1) < totalPages}" th:href="'/todayWordDictation?taskId='+${taskId}+'&pageNum='+${pageNum+1}"
+                           style="margin-top: 5px;" class="btn-red">下一个</a>&nbsp;
+                        <p style="text-align: center;">[[${pageNum+1}]] / [[${totalPages}]]</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div th:replace="module/footer"></div>
+<script th:inline="javascript">
+
+    function playAudio() {
+        //得到读音名字
+        var word = [[${currentWord.getWordName()}]];
+        //改变读音地址
+        document.getElementById('audioPlay').src = 'http://dict.youdao.com/speech?audio=' + word;
+        document.getElementById('audioPlay').play();
+    }
+
+
+    function check() {
+        let inputSpell = document.getElementById('inputSpell').value;
+        var wordName = [[${currentWord.getWordName()}]];
+        if (inputSpell != wordName) {
+            document.getElementById("answerYes").style.display = "none";
+            document.getElementById("answerNo").style.display = "block";
+        } else {
+            document.getElementById("answerYes").style.display = "block";
+            document.getElementById("answerNo").style.display = "none";
+        }
+    }
+
+</script>
